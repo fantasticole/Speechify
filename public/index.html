@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 	function appendNext(data, hinge) {
 		var author = data.author;
-		var text = data.text;
+		var text = data.text.slice(0, 200) + '...';
 		var ngrams = data.ngrams;
 		console.log('author:', author);
 		console.log('text:', text);
