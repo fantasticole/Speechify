@@ -22,6 +22,7 @@
 $(document).ready(function(){
 	$('.hinge').click(function(){
 		var nextSlug = this.id;
+		var hinge = this;
 
 
 
@@ -29,12 +30,20 @@ $(document).ready(function(){
 		  dataType: "json",
 		  url: "/2.json",
 		  success: function(data) {
-			  console.log(data);
-			  appendNext(data);
+			  appendNext(data, hinge);
 		  }
 		});
 	});
-	function appendNext(data) {
+
+	function appendNext(data, hinge) {
+		var author = data.author;
+		var text = data.text;
+		var ngrams = data.ngrams;
+		console.log('author:', author);
+		console.log('text:', text);
+		console.log('ngrams:', ngrams);
+		console.log(hinge);
+		$(hinge).append('<div class="links">' + author + '</div>');
 
 	}
 });
