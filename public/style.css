@@ -18,6 +18,15 @@ body {
 	margin: auto;
 }
 
+.match {
+	font-weight: bold;
+	color: #FF0000;
+}
+
+.match:hover {
+	text-decoration: underline;
+}
+
 
 
 
