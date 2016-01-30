@@ -4,20 +4,32 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title>Speechify</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/style.css">
 	<link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
 	<h1>Speechify</h1>
 	<div class="speech">
-		<p><span class="hinge">But we refuse</span> to believe that the bank of justice is bankrupt. We refuse to believe that there are
-			<span class="hinge">insufficient funds</span> in the great vaults of opportunity of this nation. <span class="hinge">And so,</span> we've come to cash this check, a check that will
+		<p><span id="but-we-refuse" class="hinge">But we refuse</span> to believe that the bank of justice is bankrupt. We refuse to believe that there are
+			<span id="insufficent-funds" class="hinge">insufficient funds</span> in the great vaults of opportunity of this nation. <span id="and-so" class="hinge">And so,</span> we've come to cash this check, a check that will
 			 give us upon demand the riches of freedom and the security of justice.
 			</p>
 	</div>
 </body>
 </html>
 <script>
+$(document).ready(function(){
+	$('.hinge').click(function(e){
+		var nextSlug = this.id;
 
+		$.ajax({
+		  dataType: "json",
+		  url: "/2.json",
+		  success: function(data) {
+			  console.log(data);
+		  }
+		});
+	});
+});
 </script>

@@ -7,25 +7,30 @@
         "term": "But we refuse",
         "slug": "but-we-refuse",
         "location": "32",
-        "popularity": "18"
+        "popularity": "18",
+        "linked": ["2"]
         },
         {
         "term": "We refuse to",
         "slug": "we-refuse-to",
         "location": "32",
-        "popularity": "18"
+        "popularity": "18",
+        "linked": ["2"]
         },
         {
         "term": "insufficient funds",
         "slug":"insufficient-funds",
         "location": "32",
-        "popularity": "18"
+        "popularity": "18",
+        "linked": ["2"]
         },
         {
         "term": "And so,",
         "slug": "and-so",
         "location": "32",
-        "popularity": "18"
+        "popularity": "18",
+        "linked": ["2"]
         }
     ]
+
 }
