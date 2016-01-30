@@ -28,7 +28,12 @@ body {
 	text-decoration: underline;
 }
 
+.hinge:hover .links {
+	display: block;
+}
+
 .links {
+	display: none;
 	position: absolute;
     left: 0;
     background-color: #000;
