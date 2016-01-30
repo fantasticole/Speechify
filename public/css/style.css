@@ -40,13 +40,15 @@ body {
     padding: 5px;
     border-radius: 5px;
     color: #fff;
+    width: 50vw;
+    z-index: 100;
 }
 
 .links:before {
 	content: '';
     position: absolute;
     top: -5px;
-    right: calc(50% - 10px);
+    left: 10px;
     border-width: 0 10px 10px;
     border-color: #000000 transparent;
     border-style: solid;
