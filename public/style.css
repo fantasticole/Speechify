@@ -18,12 +18,12 @@ body {
 	margin: auto;
 }
 
-.match {
+.hinge {
 	font-weight: bold;
 	color: #FF0000;
 }
 
-.match:hover {
+.hinge:hover {
 	text-decoration: underline;
 }
 
