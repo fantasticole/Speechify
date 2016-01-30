@@ -20,16 +20,22 @@
 </html>
 <script>
 $(document).ready(function(){
-	$('.hinge').click(function(e){
+	$('.hinge').click(function(){
 		var nextSlug = this.id;
+
+
 
 		$.ajax({
 		  dataType: "json",
 		  url: "/2.json",
 		  success: function(data) {
 			  console.log(data);
+			  appendNext(data);
 		  }
 		});
 	});
+	function appendNext(data) {
+
+	}
 });
 </script>
