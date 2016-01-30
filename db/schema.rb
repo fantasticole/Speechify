@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20160130210622) do
 
   create_table "n_grams", force: :cascade do |t|
-    t.string  "n_gram"
+    t.string  "text"
     t.integer "document_id"
     t.integer "location"
   end
