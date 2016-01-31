@@ -11,15 +11,42 @@
 <body>
 	<h1>Speechify</h1>
 	<div class="speech">
-		<p><span id="but-we-refuse" class="hinge">But we refuse</span> to believe that the bank of justice is bankrupt. We refuse to believe that there are
-			<span id="insufficent-funds" class="hinge">insufficient funds</span> in the great vaults of opportunity of this nation. <span id="and-so" class="hinge">And so,</span> we've come to cash this check, a check that will
-			 give us upon demand the riches of freedom and the security of justice.
-			</p>
 	</div>
 </body>
 </html>
 <script>
 $(document).ready(function(){
+	function appendText(){
+		$.ajax({
+		  dataType: "json",
+		  url: "/1.json",
+		  success: function(data) {
+		  	var text = loadHinge(data.ngrams, data.text)
+			$('.speech').append('<p>' + text + '</p>');
+		  }
+		});
+	};
+
+	function loadHinge(ngrams, text){
+		for (var x = 0; x < ngrams.length; x++) {
+			if (text.indexOf(ngrams[x].term > 0)){
+				var hinge = '<span id="' + ngrams[x].slug + '" class="hinge">' + ngrams[x].term + '<div class="links"><p data-id="2">MLK</p></div></span>';
+				var term = ngrams[x].term;
+				text = text.replace(term, hinge);
+			}
+		}
+		return text;
+	}
+
+	appendText();
+
+
+	$('.speech').click(function(e){
+		if (e.target.className === "hinge"){
+			console.log(e.target);
+		};
+	});
+
 	$('.hinge').click(function(){
 		var nextSlug = this.id;
 		var hinge = this;
@@ -43,7 +70,7 @@ $(document).ready(function(){
 		console.log('text:', text);
 		console.log('ngrams:', ngrams);
 		console.log(hinge);
-		$(hinge).append('<div class="links">' + author + '</br>' + text + '</div>');
+		$(hinge).append('<div class="links"><p data-id="' + data.id + '">' + title + '</p></div>');
 
 	}
 });
