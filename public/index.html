@@ -29,9 +29,11 @@ $(document).ready(function(){
 
 	function loadHinge(ngrams, text){
 		for (var x = 0; x < ngrams.length; x++) {
-			if (text.indexOf(ngrams[x].term > 0)){
-				var hinge = '<span id="' + ngrams[x].slug + '" class="hinge">' + ngrams[x].term + '<div class="links"><p data-id="2">MLK</p></div></span>';
-				var term = ngrams[x].term;
+			var lowerCaseText = text.toLowerCase();
+			var current = ngrams[x].term.toLowerCase();
+			if (lowerCaseText.indexOf(current > -1)){
+				var term = text.slice(lowerCaseText.indexOf(current), (lowerCaseText.indexOf(current) + current.length));
+				var hinge = '<span id="' + ngrams[x].slug + '" class="hinge">' + term + '<div class="links"><p data-id="2">MLK</p></div></span>';
 				text = text.replace(term, hinge);
 			}
 		}
