@@ -11,18 +11,20 @@
 <body>
 	<h1>Speechify</h1>
 	<div class="speech">
+		<p></p>
 	</div>
 </body>
 </html>
 <script>
 $(document).ready(function(){
-	function appendText(){
+	function appendText(id){
 		$.ajax({
 		  dataType: "json",
-		  url: "/1.json",
+		  url: "/" + id + ".json",
 		  success: function(data) {
 		  	var text = loadHinge(data.ngrams, data.text)
-			$('.speech').append('<p>' + text + '</p>');
+			$('.speech > p').append(text);
+			$('.speech > p').append("</br>");
 		  }
 		});
 	};
@@ -33,47 +35,22 @@ $(document).ready(function(){
 			var current = ngrams[x].term.toLowerCase();
 			if (lowerCaseText.indexOf(current > -1)){
 				var term = text.slice(lowerCaseText.indexOf(current), (lowerCaseText.indexOf(current) + current.length));
-				var hinge = '<span id="' + ngrams[x].slug + '" class="hinge">' + term + '<div class="links"><p data-id="2">MLK</p></div></span>';
+				var hinge = '<span id="' + ngrams[x].slug + '" class="hinge">' + term + '<div class="links"><p class="nextText" data-id="1">MLK</p><p class="nextText" data-id="2">MLK</p></div></span>';
 				text = text.replace(term, hinge);
 			}
 		}
 		return text;
 	}
 
-	appendText();
+	appendText(1);
 
 
 	$('.speech').click(function(e){
-		if (e.target.className === "hinge"){
-			console.log(e.target);
+		if (e.target.className === "nextText"){
+			var id = $(e.target).data('id');
+			appendText(id);
 		};
 	});
 
-	$('.hinge').click(function(){
-		var nextSlug = this.id;
-		var hinge = this;
-
-
-
-		$.ajax({
-		  dataType: "json",
-		  url: "/2.json",
-		  success: function(data) {
-			  appendNext(data, hinge);
-		  }
-		});
-	});
-
-	function appendNext(data, hinge) {
-		var author = data.author;
-		var text = data.text.slice(0, 200) + '...';
-		var ngrams = data.ngrams;
-		console.log('author:', author);
-		console.log('text:', text);
-		console.log('ngrams:', ngrams);
-		console.log(hinge);
-		$(hinge).append('<div class="links"><p data-id="' + data.id + '">' + title + '</p></div>');
-
-	}
 });
 </script>
