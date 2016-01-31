@@ -8,6 +8,10 @@ body {
 	background-position: 50% 50%;
 }
 
+h1 {
+	text-align: center;
+}
+
 .speech {
 	font-family: 'Shadows Into Light', cursive;
 	letter-spacing: 1.5px;
@@ -16,16 +20,13 @@ body {
 	padding: 15px;
 	border-radius: 2px;
 	margin: auto;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 .hinge {
 	font-weight: bold;
 	color: #FF0000;
 	position: relative;
-}
-
-.hinge:hover {
-	text-decoration: underline;
 }
 
 .hinge:hover .links {
@@ -37,11 +38,11 @@ body {
 	position: absolute;
     left: 0;
     background-color: #000;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
     color: #fff;
-    width: 50vw;
     z-index: 100;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 .links:before {
@@ -52,6 +53,10 @@ body {
     border-width: 0 10px 10px;
     border-color: #000000 transparent;
     border-style: solid;
+}
+
+.nextText:hover {
+	color: pink;
 }
 
 
